@@ -1,0 +1,354 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Test_ItClass
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int count = 15;
+            int[] myArray = new int[count];
+
+            Random random = new Random();
+
+            for (int i = 0; i < myArray.Length; i++)
+            {
+                myArray[i] = random.Next(-100, 100);
+            }
+
+            Console.WriteLine($"Произвольный масиив на {count} элементов \t");
+
+            for (int i = 0; i < myArray.Length; i++)
+            {
+                Console.Write(" | " + myArray[i]);
+            }
+
+            Console.WriteLine();
+
+            Console.WriteLine("Задание 1 \t");
+
+            Console.WriteLine("Уменьшение положительных элементов вдвое, остальных замена на значение индексов: ");
+            for (int i = 0; i < myArray.Length; i++)
+            {
+                if (myArray[i] > 0)
+                {
+                    myArray[i] = myArray[i] / 2;
+                    Console.Write(" | " + myArray[i]);
+                }
+                else
+                {
+                    myArray[i] = i;
+
+                    Console.Write(" | " + myArray[i]);
+                }
+            }
+
+            Console.WriteLine();
+
+            Console.WriteLine("Задание 2 \t");
+
+            int result = 0;
+            int result1 = 0;
+
+            for (int i = 0; i < myArray.Length; i++)
+            {
+                if (myArray[i] % 2 == 0)
+                {
+
+                    result += myArray[i];
+                }
+                else
+                {
+
+                    result1 += myArray[i];
+                }
+
+            }
+            Console.WriteLine("Сумма четных элементов:"+ result);
+            Console.WriteLine("Сумма нечетных элементов:" + result1);
+
+
+
+            Console.WriteLine("Задание 3 \t");
+            Console.WriteLine("Элементы в обратном порядке:");
+
+
+            for (int i = 0; i < myArray.Length / 2; i++)
+            {
+                int b = myArray[i];
+                myArray[i] = myArray[myArray.Length - i - 1];
+                myArray[myArray.Length - i - 1] = b;
+            }
+
+            for (int i = 0; i < myArray.Length; i++)
+            {
+                Console.Write(" | " + myArray[i]);
+            }
+
+            Console.WriteLine();
+
+            Console.WriteLine("Задание 4 \t");
+            Console.WriteLine("наибольшее из отрицательных элементов массива:");
+            result1 = -100;
+
+            for (int i = 0; i < myArray.Length; i++)
+            {
+                myArray[i] = random.Next(-100, 100);
+
+                Console.Write(" | " + myArray[i]);
+            }
+
+            Console.WriteLine();
+
+            for (int i = 0; i < myArray.Length; i++)
+            {
+                if (myArray[i] < 0 && myArray[i] > result1)
+                {
+                    result1 = myArray[i];
+                }
+            }
+            if (result1 > -100)
+            {
+                Console.WriteLine(result1);
+            }
+            else
+            {
+                Console.WriteLine("Отрицательных элементов нету");
+            }
+
+            Console.WriteLine("Задание 5 \t");
+           
+            int result3 = 0;
+            int result4 = 0;
+            int count1 = 0;
+            int count2 = 0;
+
+            for (int i = 0; i < myArray.Length; i++)
+            {
+                if (myArray[i] % 5 == 0)
+                {
+                    result3 += myArray[i];
+                    count1++;
+                }
+
+                if (myArray[i] % 10 != 0)
+                {
+                    result4 += myArray[i];
+                    count2++;
+                }
+            }
+            int resultSum = count1 == 0 ? 0 : result3 / count1;
+            int resultSum1 = count2 == 0 ? 0 : result4 / count2;
+            Console.WriteLine("Среднее арифметическое кратных 5: " + resultSum);
+            Console.WriteLine("Среднее арифметическое некратных 10: " + resultSum1);
+
+            Console.WriteLine("Задание 6 \t");
+            Console.WriteLine("Положительные элементы предыдущего массива:");
+            count = 0;
+            count1 = 0;
+            int count3 = 0;
+            int count4 = 0;
+
+            for (int i = 0; i < myArray.Length; i++)
+            {
+                if (myArray[i] > 0)
+                {
+                    count++;
+
+                }
+                else
+                {
+                    count1++;
+
+                }
+            }
+
+            int[] newArray = new int[count];
+
+            int[] newArray1 = new int[count1];
+
+
+            for (int i = 0; i < myArray.Length; i++)
+            {
+                if (myArray[i] > 0)
+                {
+                    newArray[count3] = myArray[i];
+                    count3++;
+
+                }
+                else
+                {
+                    newArray1[count4] = myArray[i];
+                    count4++;
+
+                }
+
+            }
+            
+            for (int i = 0; i < newArray.Length; i++)
+            {
+
+                Console.Write(" | " + newArray[i]);
+            }
+            Console.WriteLine();
+
+            Console.WriteLine("Остальные элементы предыдущего массива:");
+
+            for (int i = 0; i < newArray1.Length; i++)
+            {
+
+                Console.Write(" | " + newArray1[i]);
+            }
+            Console.WriteLine();
+            Console.WriteLine("Задание 7 \t");
+
+            Console.WriteLine("Массив из отрицательных элементов кратных 3ом одного массива и четных положительных элементов другого массива:");
+            count1 = 0;
+            count2 = 0;
+            count3 = 0;
+
+            for (int i = 0; i < newArray1.Length; i++)
+            {
+
+                if (newArray1[i] < 0 && newArray1[i] % 3 == 0)
+                {
+                    count1++;
+                }
+            }
+            for (int i = 0; i < newArray.Length; i++)
+            {
+
+                if (newArray[i] > 0 && newArray[i] % 2 == 0)
+                {
+                    count2++;
+                }
+            }
+
+            count3 = count1 + count2;
+            count1 = 0;
+
+            int[] newArray3 = new int[count3];
+
+            for (int i = 0; i < newArray1.Length; i++)
+            {
+
+                if (newArray1[i] < 0 && newArray1[i] % 3 == 0)
+                {
+                    newArray3[count1] = newArray1[i];
+                    count1++;
+                }
+            }
+
+            for (int i = 0; i < newArray.Length; i++)
+            {
+
+                if (newArray[i] > 0 && newArray[i] % 2 == 0)
+                {
+                    newArray3[count1] = newArray[i];
+                    count1++;
+                }
+            }
+            for (int i = 0; i < newArray3.Length; i++)
+            {
+
+                Console.Write(" | " + newArray3[i]);
+            }
+            Console.WriteLine();
+            Console.WriteLine("Сортировка по убыванию:");
+
+            for (int i = 0; i < newArray3.Length; i++)
+            {
+                for (int j = 0; j < newArray3.Length - 1; j++)
+                {
+                    if (newArray3[j] < newArray3[j + 1])
+                    {
+                        int b = newArray3[j];
+                        newArray3[j] = newArray3[j + 1];
+                        newArray3[j + 1] = b;
+                    }
+
+                }
+            }
+
+
+                for (int i = 0; i < newArray3.Length; i++)
+                {
+
+                    Console.Write(" | " + newArray3[i]);
+                }
+
+                Console.WriteLine();
+
+                Console.WriteLine("Задание 8 \t");
+
+            int arraysize = 20;
+
+            Console.WriteLine($"Произвольный масиив на {arraysize} элементов \t");
+
+            int[] myArray4 = new int[arraysize];
+
+            for (int i = 0; i < myArray4.Length; i++)
+            {
+                myArray4[i] = random.Next(-100, 100);
+            }
+
+            for (int i = 0; i < myArray4.Length; i++)
+            {
+
+                Console.Write(" | " + myArray4[i]);
+            }
+            Console.WriteLine();
+            
+            int index1=0;
+            int index2=0;
+
+            for (int i = 0; i < myArray4.Length; i++)
+            {
+
+                if (myArray4[i]>0)
+                {
+                    index1 = i;
+                    break;
+                } 
+            }
+
+            for (int i = myArray4.Length; i > 0; i--)
+            {
+
+                if (myArray4[i-1] < 0)
+                {
+                    index2 = i;
+                    break;
+                }
+            }
+
+            for (int i = 0; i < myArray4.Length; i++)
+            {
+                for (int j = index1; j < index2-1; j++)
+                {
+                    if (myArray4[j] > myArray4[j + 1])
+                    {
+                        int b = myArray4[j];
+                        myArray4[j] = myArray4[j + 1];
+                        myArray4[j + 1] = b;
+                    }
+
+                }
+            }
+            Console.WriteLine("Сортировка по возврастанию от первого положительного до последнего отрицательного элемента:");
+            
+            for (int i = 0; i < myArray4.Length; i++)
+            {
+
+                Console.Write(" | " + myArray4[i]);
+            }
+            Console.WriteLine();
+
+
+        }      
+     }
+}
